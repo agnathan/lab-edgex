@@ -1,0 +1,1294 @@
+{
+	"info": {
+		"_postman_id": "8f61cbe4-ced0-4bbf-90d8-997335368cbf",
+		"name": "core-data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/event/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific event by database specified id - returning null if none are found. Note: does not yet handle device managers. ServiceException (HTTP 500) for unknown or unanticipated issues\n\nParameters:\n\nid: database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/count",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"count"
+					]
+				},
+				"description": "Return a count of the number of events in core data.  ServiceException (HTTP 500) for unknown or unanticipated issues..\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/count/:deviceId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/count/:deviceId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"count",
+						":deviceId"
+					],
+					"variable": [
+						{
+							"key": "deviceId"
+						}
+					]
+				},
+				"description": "Return a count of the number of events in core data for a given device - identified by id or name.  InternalServerError (HTTP 500) for unknown or unanticipated issues..\n\nParameters:\n\ndeviceId: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/device/:deviceId/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/device/:deviceId/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"device",
+						":deviceId",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "deviceId"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return list of events with their associated readings for a given device, sort by event creation date. May be an empty list if none are associated to the device.  Note: does not yet handle device managers. LimitExceededException (HTTP 413) if the number of events exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.  NotFoundException (HTTP 404) if the meta data checks are on and no device is found for supplied id.\n\nParameters:\n\nlimit: maximum number of events to fetch, must be < max limit\n\ndeviceId: the id (database generated id) or name of the device associated to events\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/device/:deviceId",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/device/:deviceId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"device",
+						":deviceId"
+					],
+					"variable": [
+						{
+							"key": "deviceId"
+						}
+					]
+				},
+				"description": "Delete all events (and their readings) associated to a device given the device's id (either database generated id or name). ServiceException (HTTP 500) for unknown or unanticipated issues.   NotFoundException (HTTP 404) if the meta data checks are on and no device is found for supplied id.\n\nParameters:\n\ndeviceId: the id (database generated id) or name of the device associated to events\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/:start/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/:start/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						":start",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return all events between a given begin and end date/time (in the form of longs). LimitExceededException (HTTP 413) if the number of events exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlimit: maximum number of events to fetch, must be < max limit\n\nstart: start date in long form\n\nend: end date in long form\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/device/:deviceId/valuedescriptor/:valuedescriptor/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/device/:deviceId/valuedescriptor/:valuedescriptor/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"device",
+						":deviceId",
+						"valuedescriptor",
+						":valuedescriptor",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "deviceId"
+						},
+						{
+							"key": "valuedescriptor"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return all readings associated to the device via the event, and filtered by those readings associated to the provided value descriptor.  LimitExceededException (HTTP 413) if the number of events (associated to the device) exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlimit: maximum number of events to fetch, must be < max limit\n\ndeviceId: the id (database generated id) or name of the device associated to events\n\nvaluedescriptor: value descriptor used to filter readings\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/removeold/age/:age",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/removeold/age/:age",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"removeold",
+						"age",
+						":age"
+					],
+					"variable": [
+						{
+							"key": "age"
+						}
+					]
+				},
+				"description": "Remove all old events (and associated readings) based on delimiting age.  ServiceException (HTTP 500) for unknown or unanticipated issues.  Should only be used by the scrubber micro service\n\nParameters:\n\nage: minimum age in milliseconds (from created timestamp) an event should be in order to be removed\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/scrub",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/scrub",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"scrub"
+					]
+				},
+				"description": "Remove all pushed events and their associated readings.ServiceException (HTTP 500) for unknown or unanticipated issues.  Should only be used by the scrubber micro service\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/count",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/count",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						"count"
+					]
+				},
+				"description": "Return a count of the number of readings in core dataServiceException (HTTP 500) for unknown or unanticipated issues..\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Retrieve a reading by its database generated id.  NotFoundException (HTTP 404) if reading not found by id.  ServiceException (HTTP 500) for unknown or unanticipated issues\n\nParameters:\n\nid: reading database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Delete the reading from persistent storage. NotFoundException (HTTP 404) if the reading cannot be found by id. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nid: database generated id of the reading to be deleted\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/device/:deviceId/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/device/:deviceId/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						"device",
+						":deviceId",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "deviceId"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return list of all readings for a given device, sort by reading creation date. Note: does not yet handle device managers. LimitExceededException (HTTP 413) if the number of readings exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if meta checks are in place and if the device id or name does not match any existing devices.\n\nParameters:\n\nlimit: maximum number of readings requested (not to exceed max limit)\n\ndeviceId: device database generated id or device name\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/name/:name/device/:device/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/name/:name/device/:device/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						"name",
+						":name",
+						"device",
+						":device",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "device"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return a list of readings that are associated to a ValueDescripter by name and Device by name (or id). LimitExceededException (HTTP 413) if the number of readings exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlimit: maximum number of readings to return (must not exceed max limit)\n\nname: name of the matching ValueDescriptor\n\ndevice: name or id of the matching device (as the device is represented in the associated event)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/name/:name/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/name/:name/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						"name",
+						":name",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return a list of readings that are associated to a ValueDescripter by name. LimitExceededException (HTTP 413) if the number of readings exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlimit: maximum number of readings to return (must not exceed max limit)\n\nname: name of the matching ValueDescriptor\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/uomlabel/:uomLabel/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/uomlabel/:uomLabel/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						"uomlabel",
+						":uomLabel",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "uomLabel"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return a list of readings with an associated value descriptor of the UoM label specified. LimitExceededException (HTTP 413) if the number of readings exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlimit: exceed max limit)\n\nuomLabel: Unit of Measure label (UoMLabel) matching the ValueDescriptor associated to the reading\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/label/:label/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/label/:label/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						"label",
+						":label",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "label"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return a list of readings with an associated value descriptor of the label specified. LimitExceededException (HTTP 413) if the number of readings exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlimit: maximum number of readings to return (must not exceed max limit)\n\nlabel: label that should be in matching Value Descriptor's label array\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/type/:type/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/type/:type/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						"type",
+						":type",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "type"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return a list of readings with an associated value descriptor of the type (IoTType) specified. LimitExceededException (HTTP 413) if the number of readings exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlimit: maximum number of readings to be allowed to be returned\n\ntype: an IoTType in string form (one of I, B, F, S for integer, Boolean, Floating point or String)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading/:start/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading/:start/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading",
+						":start",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Return a list of readings between two timestamps - limited by the number specified in the limit parameter. LimitExceededException (HTTP 413) if the number of readings exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlimit: maximum number of readings to be allowed to be returned\n\nstart: millisecond (long) timestamp of the beginning of the time\n\nend: millisecond (long) timestamp of the end of the time rage\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the ValueDescriptor designated by database generated identifier. ServiceException (HTTP 500) for unknown or unanticipated issues. DataValidationException (HTTP 409) if the value descriptor is still referenced in Readings. NotFoundException (404) if the value descriptor cannot be located by the identifier.\n\nParameters:\n\nid: Value descriptor database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific ValueDescriptor by its database generated id.  NotFoundException (HTTP 404) if the value descriptor cannot be found by id.  ServiceException (HTTP 500) for unknown or unanticipated issues\n\nParameters:\n\nid: database generated id for the value descriptor\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor/devicename/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor/devicename/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor",
+						"devicename",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Fetch all ValueDescriptors that are associated to a Device's command set as either a put command parameter name or get/put response expected value.  NotFoundException (HTTP 404) if the Device cannot be found by name.  ServiceException (HTTP 500) for unknown or unanticipated issues\n\nParameters:\n\nname: unique name of the device\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor/deviceid/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor/deviceid/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor",
+						"deviceid",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch all ValueDescriptors that are associated to a Device's command set as either a put command parameter name or get/put response expected value.  NotFoundException (HTTP 404) if the Device cannot be found by name.  ServiceException (HTTP 500) for unknown or unanticipated issues\n\nParameters:\n\nid: database generated id of the device\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor/uomlabel/:uomLabel",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor/uomlabel/:uomLabel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor",
+						"uomlabel",
+						":uomLabel"
+					],
+					"variable": [
+						{
+							"key": "uomLabel"
+						}
+					]
+				},
+				"description": "Return ValueDescriptor objects with given UoM label. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nuomLabel: unit of measure\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor/label/:label",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor/label/:label",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor",
+						"label",
+						":label"
+					],
+					"variable": [
+						{
+							"key": "label"
+						}
+					]
+				},
+				"description": "Return ValueDescriptor objects with given label. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlabel: tag or label\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"ping"
+					]
+				},
+				"description": "Test service providing an indication that the service is available.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/config",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"config"
+					]
+				},
+				"description": "Fetch the current state of the service's configuration.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"device\":\"livingroomthermostat\",\"readings\":[{\"origin\":1471806386919,\"name\":\"temperature\",\"value\":\"38\"}]}"
+				},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event"
+					]
+				},
+				"description": "Add a new event (with its associated readings). Prefers the event device is a device name but can also be a device id (database generated). DataValidationException (HTTP 409) if the a reading is associated to a non-existent value descriptor. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57ba04a1189b95b8afcdafd7\",\"pushed\":1471806399999}"
+				},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event"
+					]
+				},
+				"description": "Update the event data (not including updating the readings). NotFoundException (HTTP 404) if the event cannot be found by id. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event"
+					]
+				},
+				"description": "Fetch all events with their associated readings. LimitExceededException (HTTP 413) if the number of events exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Delete an event and all its readings given its database generated id. NotFoundException (HTTP 404) if the event cannot be found by id. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nid: database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/event/id/:id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/event/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"event",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Update the event to be pushed (out of EdgeX to an enterprise or cloud system) by setting the pushed timestamp to the current time. NotFoundException (HTTP 404) if the event cannot be found by id. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nid: database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"temperature\",\"value\":\"38\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading"
+					]
+				},
+				"description": "Add a new reading. ServiceException (HTTP 500) for unknown or unanticipated issues. DataValidationException (HTTP 409) if the associated value descriptor is non-existent.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57b9fe08189b95b8afcdafd4\",\"value\":\"39\"} or {\"id\":\"57b9fe08189b95b8afcdafd4\",\"pushed\":1471806486919}"
+				},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading"
+					]
+				},
+				"description": "Update the reading.  Reading object needs to contain the database generated id of the existing reading. NotFoundException (HTTP 404) if the reading cannot be found by id. ServiceException (HTTP 500) for unknown or unanticipated issues. DataValidationException if the associated value descriptor is non-existent.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/reading",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/reading",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"reading"
+					]
+				},
+				"description": "Return list of all readings. Sorts by reading id. LimitExceededException (HTTP 413) if the number of readings exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"temperature\",\"description\":\"test description\", \"min\":\"-40\",\"max\":\"140\",\"type\":\"F\",\"uomLabel\":\"degree cel\",\"defaultValue\":\"0\",\"formatting\":\"%s\",\"labels\":[\"temp\",\"hvac\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor"
+					]
+				},
+				"description": "Add a new ValueDescriptor whose name must be unique. ServiceException (HTTP 500) for unknown or unanticipated issues. DataValidationException (HTTP 409) if the a formatting string of the value descriptor is not a valid printf format.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57b9f9f8189b95b8afcdafd1\",\"min\":\"-100\",\"max\":\"200\"}  or {\"name\":\"temperature\",\"min\":\"-100\",\"max\":\"200\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor"
+					]
+				},
+				"description": "Update the ValueDescriptor identified by the id or name in the object provided. Id is used first, name is used second for identification purposes. ServiceException (HTTP 500) for unknown or unanticipated issues. DataValidationException (HTTP 409) if the a formatting string of the value descriptor is not a valid printf format. NotFoundException (404) if the value descriptor cannot be located by the identifier.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor"
+					]
+				},
+				"description": "Return all ValueDescriptor objects. LimitExceededException (HTTP 413) if the number of value descriptors exceeds the current max limit. ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return ValueDescriptor object with given name. Could be null if no value descriptors found by the name (name is unique across all value descriptors).  NotFoundException (HTTP 404) if the value descriptor cannont be found by nmee.  ServiceException (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nname: Unique name of the value descriptor\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/valuedescriptor/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48080/api/v1/valuedescriptor/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48080",
+					"path": [
+						"api",
+						"v1",
+						"valuedescriptor",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the ValueDescriptor designated by name. ServiceException (HTTP 500) for unknown or unanticipated issues. DataValidationException (HTTP 409) if the value descriptor is still referenced in Readings. NotFoundException (404) if the value descriptor cannot be located by the identifier.\n\nParameters:\n\nname: Unique name of the value descriptor\n\n"
+			},
+			"response": []
+		}
+	]
+}

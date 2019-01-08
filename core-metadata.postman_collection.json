@@ -1,0 +1,3636 @@
+{
+	"info": {
+		"_postman_id": "a8a11806-931b-4cd5-bd9b-eeb3a4f26c5c",
+		"name": "core-metadata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"ping"
+					]
+				},
+				"description": "ping\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/config",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"config"
+					]
+				},
+				"description": "Fetch the current state of the service's configuration.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the Device designated by database generated id. This does not remove associated objects (addressable, service, profile, etc.). Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/check/:token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/check/:token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"check",
+						":token"
+					],
+					"variable": [
+						{
+							"key": "token"
+						}
+					]
+				},
+				"description": "Obtain a device by either name (preferred) or id. Id must be a valid BSON identifier.\n\nParameters:\n\ntoken: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name/opstate/:opState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/name/:name/opstate/:opState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name",
+						"opstate",
+						":opState"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "opState"
+						}
+					]
+				},
+				"description": "Update the op status time of the device by unique name of the device. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the name provided.\n\nParameters:\n\nopState: \n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name/adminstate/:adminState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/name/:name/adminstate/:adminState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name",
+						"adminstate",
+						":adminState"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "adminState"
+						}
+					]
+				},
+				"description": "Update the admin state of the device by device name. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nname: \n\nadminState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name/lastreported/:time",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/name/:name/lastreported/:time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name",
+						"lastreported",
+						":time"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "time"
+						}
+					]
+				},
+				"description": "Update the last reported time of the device by unique name of the device. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the name provided.\n\nParameters:\n\ntime: \n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name/lastreported/:time/:notify",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/name/:name/lastreported/:time/:notify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name",
+						"lastreported",
+						":time",
+						":notify"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "time"
+						},
+						{
+							"key": "notify"
+						}
+					]
+				},
+				"description": "Update the last reported time of the device by unique name of the device. The notify boolean indicates whether the owning device service should be notified of the change.  Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the name provided.\n\nParameters:\n\ntime: \n\nname: \n\nnotify: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name/lastconnected/:time",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/name/:name/lastconnected/:time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name",
+						"lastconnected",
+						":time"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "time"
+						}
+					]
+				},
+				"description": "Update the last connected time of the device by unique name of the device. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the name provided.\n\nParameters:\n\ntime: \n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name/lastconnected/:time/:notify",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/name/:name/lastconnected/:time/:notify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name",
+						"lastconnected",
+						":time",
+						":notify"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "time"
+						},
+						{
+							"key": "notify"
+						}
+					]
+				},
+				"description": "Update the last connected time of the device by unique name of the device. The notify boolean indicates whether the owning device service should be notified of the change. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the name provided.\n\nParameters:\n\ntime: \n\nname: \n\nnotify: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/opstate/:opState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/:id/opstate/:opState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"opstate",
+						":opState"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "opState"
+						}
+					]
+				},
+				"description": "Update the op state of the device by database generated identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\nopState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/adminstate/:adminState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/:id/adminstate/:adminState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"adminstate",
+						":adminState"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "adminState"
+						}
+					]
+				},
+				"description": "Update the admin state of the device by database generated identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\nadminState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/lastreported/:time",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/:id/lastreported/:time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"lastreported",
+						":time"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "time"
+						}
+					]
+				},
+				"description": "Update the last reported time of the device by database generated identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\ntime: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/lastreported/:time/:notify",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/:id/lastreported/:time/:notify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"lastreported",
+						":time",
+						":notify"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "time"
+						},
+						{
+							"key": "notify"
+						}
+					]
+				},
+				"description": "Update the last reported time of the device by database generated identifier. The notify boolean indicates whether the owning device service should be notified of the change. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\ntime: \n\nnotify: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/lastconnected/:time",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/:id/lastconnected/:time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"lastconnected",
+						":time"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "time"
+						}
+					]
+				},
+				"description": "Update the last connected time of the device by database generated identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\ntime: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/lastconnected/:time/:notify",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/:id/lastconnected/:time/:notify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"lastconnected",
+						":time",
+						":notify"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "time"
+						},
+						{
+							"key": "notify"
+						}
+					]
+				},
+				"description": "Update the last connected time of the device by database generated identifier. The notify boolean indicates whether the owning device service should be notified of the change. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\ntime: \n\nnotify: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific device by database generated id. May return null if no device with the id is found. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/label/:label",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/label/:label",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"label",
+						":label"
+					],
+					"variable": [
+						{
+							"key": "label"
+						}
+					]
+				},
+				"description": "Find all Devices having at least one label matching the label provided. List may be empty if no device match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlabel: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/profile/:profileId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/profile/:profileId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"profile",
+						":profileId"
+					],
+					"variable": [
+						{
+							"key": "profileId"
+						}
+					]
+				},
+				"description": "Find all devices associated to the DeviceProfile with the specified profile database generated identifier. List may be empty if no device match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no DeviceProfile match on the id provided.\n\nParameters:\n\nprofileId: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/service/:serviceId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/service/:serviceId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"service",
+						":serviceId"
+					],
+					"variable": [
+						{
+							"key": "serviceId"
+						}
+					]
+				},
+				"description": "Find all devices associated to the DeviceService with the specified DeviceService database generated identifier. List may be empty if no device match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no DeviceService match on the id provided.\n\nParameters:\n\nserviceId: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/servicename/:servicename",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/servicename/:servicename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"servicename",
+						":servicename"
+					],
+					"variable": [
+						{
+							"key": "servicename"
+						}
+					]
+				},
+				"description": "Find all devices associated to the DeviceService with the specified service name (DeviceService names must be unique). List may be empty if no device match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no DeviceService match on the name provided.\n\nParameters:\n\nservicename: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/addressablename/:addressablename",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/addressablename/:addressablename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"addressablename",
+						":addressablename"
+					],
+					"variable": [
+						{
+							"key": "addressablename"
+						}
+					]
+				},
+				"description": "Find all devices associated to the Addressable with the specified addressable name. List may be empty if no device match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no Addressable match on the name provided.\n\nParameters:\n\naddressablename: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/profilename/:profilename",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/profilename/:profilename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"profilename",
+						":profilename"
+					],
+					"variable": [
+						{
+							"key": "profilename"
+						}
+					]
+				},
+				"description": "Find all devices associated to the DeviceProfile with the specified profile name. List may be empty if no device match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no DeviceProfile match on the name provided.\n\nParameters:\n\nprofilename: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/addressable/:addressableId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/addressable/:addressableId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"addressable",
+						":addressableId"
+					],
+					"variable": [
+						{
+							"key": "addressableId"
+						}
+					]
+				},
+				"description": "Find all devices associated to the Addressable with the specified addressable database generated identifier. List may be empty if no device match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no Addressable match on the id provided.\n\nParameters:\n\naddressableId: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the DeviceProfile designated by database generated id. This does not remove associated commands. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device profile cannot be found by the identifier provided. Returns DataValidationException (HTTP 413) if devices still reference the profile.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/manufacturer/:manufacturer/model/:model",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/manufacturer/:manufacturer/model/:model",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"manufacturer",
+						":manufacturer",
+						"model",
+						":model"
+					],
+					"variable": [
+						{
+							"key": "manufacturer"
+						},
+						{
+							"key": "model"
+						}
+					]
+				},
+				"description": "Find all DeviceProfiles with a manufacture or model attribute matching that provided (either matching provides a hit). List may be empty if no profiles match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nmodel: \n\nmanufacturer: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/manufacturer/:manufacturer",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/manufacturer/:manufacturer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"manufacturer",
+						":manufacturer"
+					],
+					"variable": [
+						{
+							"key": "manufacturer"
+						}
+					]
+				},
+				"description": "Find all DeviceProfiles with a manufacture attribute matching that provided. List may be empty if no profiles match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nmanufacturer: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/uploadfile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/uploadfile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"uploadfile"
+					]
+				},
+				"description": "Add a new DeviceProfile (and associated Command objects) via YAML profile file - name must be unique. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns DataValidationException (HTTP 409) if an associated command's name is a duplicate for the profile. Returns ClientException (HTTP 400) if the YAML file is empty.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific profile by database generated id. May return null if no profile with the id is found. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  Returns NotFoundException (HTTP 404) if the device profile cannot be found by the id provided.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"upload"
+					]
+				},
+				"description": "Add a new DeviceProfile (and associated Command objects) via YAML content - name must be unique. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns DataValidationException (HTTP 409) if an associated command's name is a duplicate for the profile.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/yaml/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/yaml/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"yaml",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return, in yaml form, the DeviceProfiles matching given name (profile names should be unique). May be null if no profiles matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  Returns NotFoundException (HTTP 404) if the device profile cannot be found by the name provided.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/yaml/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/yaml/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"yaml",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch the profile identified by database generated id and return as a YAML string. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  eturns NotFoundException (HTTP 404) if the device profile cannot be found by the name provided.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/model/:model",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/model/:model",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"model",
+						":model"
+					],
+					"variable": [
+						{
+							"key": "model"
+						}
+					]
+				},
+				"description": "Find all DeviceProfiles with a model attribute matching that provided. List may be empty if no profiles match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nmodel: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/label/:label",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/label/:label",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"label",
+						":label"
+					],
+					"variable": [
+						{
+							"key": "label"
+						}
+					]
+				},
+				"description": "Find all DeviceProfiles having at least one label matching the label provided. List may be empty if no profiles match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlabel: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the DevicReport designated by database generated id. Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no DeviceReport is found with the provided id.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific DeviceReport by database generated id. May return null if no report with the id is found. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  NotFoundException (HTTP 404) if no DeviceReport is found with the provided id.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport/devicename/:devicename",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport/devicename/:devicename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport",
+						"devicename",
+						":devicename"
+					],
+					"variable": [
+						{
+							"key": "devicename"
+						}
+					]
+				},
+				"description": "Return DeviceReports with associated device matching given name (device names should be unique). May be an empty list if no device matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\ndevicename: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport/valueDescriptorsFor/:devicename",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport/valueDescriptorsFor/:devicename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport",
+						"valueDescriptorsFor",
+						":devicename"
+					],
+					"variable": [
+						{
+							"key": "devicename"
+						}
+					]
+				},
+				"description": "Return list of value descriptor names associated to device reports associated to name of the device provided. May be an empty list if no device matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\ndevicename: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the DeviceService designated by database generated id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/addressablename/:addressablename",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/addressablename/:addressablename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"addressablename",
+						":addressablename"
+					],
+					"variable": [
+						{
+							"key": "addressablename"
+						}
+					]
+				},
+				"description": "Find all device serices associated to the Addressable with the specified addressable name. List may be empty if no device services match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no Addressable match on the name provided.\n\nParameters:\n\naddressablename: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/name/:name/opstate/:opState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/name/:name/opstate/:opState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"name",
+						":name",
+						"opstate",
+						":opState"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "opState"
+						}
+					]
+				},
+				"description": "Update the op status time of the device service by unique name of the device service. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the name provided.\n\nParameters:\n\nopState: \n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/name/:name/adminstate/:adminState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/name/:name/adminstate/:adminState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"name",
+						":name",
+						"adminstate",
+						":adminState"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "adminState"
+						}
+					]
+				},
+				"description": "Update the admin state of the device service by device service name. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the identifier provided.\n\nParameters:\n\nname: \n\nadminState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/name/:name/lastreported/:time",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/name/:name/lastreported/:time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"name",
+						":name",
+						"lastreported",
+						":time"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "time"
+						}
+					]
+				},
+				"description": "Update the last reported time of the device service by unique name of the device service. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the name provided.\n\nParameters:\n\ntime: \n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/name/:name/lastconnected/:time",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/name/:name/lastconnected/:time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"name",
+						":name",
+						"lastconnected",
+						":time"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "time"
+						}
+					]
+				},
+				"description": "Update the last connected time of the device service by unique name of the device service. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the name provided.\n\nParameters:\n\ntime: \n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/:id/opstate/:opState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/:id/opstate/:opState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						":id",
+						"opstate",
+						":opState"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "opState"
+						}
+					]
+				},
+				"description": "Update the op state of the device service by database generated identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\nopState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/:id/adminstate/:adminState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/:id/adminstate/:adminState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						":id",
+						"adminstate",
+						":adminState"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "adminState"
+						}
+					]
+				},
+				"description": "Update the admin state of the device service by database generated identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\nadminState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/:id/lastreported/:time",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/:id/lastreported/:time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						":id",
+						"lastreported",
+						":time"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "time"
+						}
+					]
+				},
+				"description": "Update the last reported time of the device service by database generated identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\ntime: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/:id/lastconnected/:time",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/:id/lastconnected/:time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						":id",
+						"lastconnected",
+						":time"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "time"
+						}
+					]
+				},
+				"description": "Update the last connected time of the device service by database generated identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\ntime: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific device service by database generated id. May return null if no service with the id is found. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the identifier provided.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/addressable/:addressableId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/addressable/:addressableId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"addressable",
+						":addressableId"
+					],
+					"variable": [
+						{
+							"key": "addressableId"
+						}
+					]
+				},
+				"description": "Find all device servicess associated to the Addressable with the specified addressable database generated identifier. List may be empty if no device service match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no Addressable match on the id provided.\n\nParameters:\n\naddressableId: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/label/:label",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/label/:label",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"label",
+						":label"
+					],
+					"variable": [
+						{
+							"key": "label"
+						}
+					]
+				},
+				"description": "Find all DeviceServices having at least one label matching the label provided. List may be empty if no device services match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nlabel: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/scheduleevent/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/scheduleevent/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"scheduleevent",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the ScheduleEvent designated by database generated id. Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no ScheduleEvent is found with the provided id. DataValidationException (HTTP 409) if an attempt to delete a schedule event still being referenced by device reports.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/scheduleevent/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/scheduleevent/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"scheduleevent",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific ScheduleEvent by database generated id. May return null if no schedule event with the id is found. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no ScheduleEvent is found with the provided id.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/schedule/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/schedule/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"schedule",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the Schedule designated by database generated id. Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no Schedule is found with the provided id.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/schedule/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/schedule/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"schedule",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific Schedule by database generated id. May return null if no schedule with the id is found. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no Schedule is found with the provided id.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the ProvisionWatcher designated by the database generated id for the ProvisionWatcher. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no provision watcher with the provided id is found.\n\nParameters:\n\nid: database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific provision watcher by database generated id. May return null if no provision watcher matches on id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  Returns NotFoundException (HTTP 404) if no provision watcher with the provided id is found.\n\nParameters:\n\nid: database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/profile/:profileId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/profile/:profileId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						"profile",
+						":profileId"
+					],
+					"variable": [
+						{
+							"key": "profileId"
+						}
+					]
+				},
+				"description": "Find all provision watchers associated to the DeviceProfile with the specified profile database generated identifier. List may be empty if no provision watchers match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no DeviceProfile match on the id provided.\n\nParameters:\n\nprofileId: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/profilename/:profilename",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/profilename/:profilename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						"profilename",
+						":profilename"
+					],
+					"variable": [
+						{
+							"key": "profilename"
+						}
+					]
+				},
+				"description": "Find all provision watchers associated to the DeviceProfile with the specified profile name. List may be empty if no provision watcher match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no DeviceProfile match on the name provided.\n\nParameters:\n\nprofilename: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/service/:serviceId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/service/:serviceId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						"service",
+						":serviceId"
+					],
+					"variable": [
+						{
+							"key": "serviceId"
+						}
+					]
+				},
+				"description": "Find the provision watchers associated to the DeviceService with the specified service database generated identifier. List may be empty if no provision watchers match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no DeviceService match on the id provided.\n\nParameters:\n\nserviceId: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/servicename/:servicename",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/servicename/:servicename",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						"servicename",
+						":servicename"
+					],
+					"variable": [
+						{
+							"key": "servicename"
+						}
+					]
+				},
+				"description": "Find the provision watchers associated to the DeviceService with the specified service name. List may be none if no provision watcher match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no DeviceService match on the name provided.\n\nParameters:\n\nservicename: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/identifier/:key/:value",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/identifier/:key/:value",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						"identifier",
+						":key",
+						":value"
+					],
+					"variable": [
+						{
+							"key": "key"
+						},
+						{
+							"key": "value"
+						}
+					]
+				},
+				"description": "Find the provision watchers associated to the identifier key/value pair.  The identifier key/value pair identify a protocol and address of the protocol to watch for by the Device Service. List may be none if no provision watcher match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nkey: \n\nvalue: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the Addressable designated by the database generated id for the Addressable. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no addressable with the provided id is found.\n\nParameters:\n\nid: database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific addressable by database generated id. May return null if no addressable matches on id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  Returns NotFoundException (HTTP 404) if not found by the id.\n\nParameters:\n\nid: database generated id\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable/topic/:topic",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable/topic/:topic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable",
+						"topic",
+						":topic"
+					],
+					"variable": [
+						{
+							"key": "topic"
+						}
+					]
+				},
+				"description": "Return Addressable objects with given topic. List may be empty if none are associated to the topic. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\ntopic: topic name (as in MQTT topic name)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable/port/:port",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable/port/:port",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable",
+						"port",
+						":port"
+					],
+					"variable": [
+						{
+							"key": "port"
+						}
+					]
+				},
+				"description": "Return Addressable objects with given port. List may be empty if none are associated to the port. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nport: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable/publisher/:publisher",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable/publisher/:publisher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable",
+						"publisher",
+						":publisher"
+					],
+					"variable": [
+						{
+							"key": "publisher"
+						}
+					]
+				},
+				"description": "Return Addressable objects with given publisher. List may be empty if none are associated to the publisher. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\npublisher: publisher name (as in MQTT publisher)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable/address/:address",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable/address/:address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable",
+						"address",
+						":address"
+					],
+					"variable": [
+						{
+							"key": "address"
+						}
+					]
+				},
+				"description": "Return Addressable objects with given address. List may be empty if none are associated to the address. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\naddress: address (as in URL address)\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/command/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/command/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"command",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Remove the Command designated by database generated id. Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no Command is found with the provided id. DataValidationException (HTTP 409) if the Command is still associated to a Device Profile.\n\nParameters:\n\nid: database generated id for the Command\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/command/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/command/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"command",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a specific command by database generated id. May return null if no commands with the id is found. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no command with the provided id is found.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/command/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/command/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"command",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return Command objects with given name. Name is not unique for all of EdgeX but is unique per any associated Device Profile. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the Device designated by unique name. This does not remove associated objects (addressable, service, profile, etc.). Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return Device matching given name (device names should be unique). May be null if no device matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"livingroomthermostat\",\"description\":\"living room HVAC thermostat\",\"adminState\":\"unlocked\",\"operatingState\":\"enabled\",\"addressable\":{\"name\":\"hvac thermo address\"},\"labels\":[\"home\",\"hvac\",\"thermostat\"],\"location\":\"{lat:45.45,long:47.80}\",\"service\":{\"name\":\"home thermostat device service\"},\"profile\":{\"name\":\"thermostat profile\"}}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				},
+				"description": "Add a new Device - name must be unique. Embedded objects (device, service, profile, addressable) are all referenced in the new Device object by id or name to associated objects. All other data in the embedded objects will be ignored. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns DataValidationException (HTTP 409) if an associated object (Addressable, Profile, Service) cannot be found with the id or name provided.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57bc6d80555e5218873e5a30\", \"description\":\"living room thermostat\",\"adminState\":\"locked\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				},
+				"description": "Update the Device identified by the id or name stored in the object provided. Id is used first, name is used second for identification purposes. New device services & profiles cannot be created with a PUT, but the service and profile can replaced by referring to a new device service or profile id or name. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device cannot be found by the identifier provided.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/device",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				},
+				"description": "Return all devices sorted by id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the DeviceProfile designated by unique name. This does not remove associated commands. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device profile cannot be found by the name provided. Returns DataValidationException (HTTP 409) if devices still reference the profile.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return the DeviceProfile matching given name (profile names should be unique). May be null if no profiles matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device profile cannot be found by the name provided.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"thermostat profile\",\"description\":\"BACnet Honeywell thermostats\",\"manufacturer\":\"Honeywell\",\"model\":\"ABC123\", \"labels\":[\"bacnet\",\"thermostat\",\"Honeywell\"],\"commands\":[{\"origin\":1471806386919,\"name\":\"cooling point\",\"get\":{\"path\":\"/cooling\",\"responses\":[{\"code\":\"200\",\"description\":\"ok\",\"expectedValues\":[\"temperature\"]}]},\"put\":{\"path\":\"/cooling\", \"responses\":[{\"code\":\"200\",\"description\":\"ok\",\"expectedValues\":[\"temperature\"]}], \"parameterNames\":[\"coolingpoint\"]}}],\"objects\":{\"resources\":{\"CurrentHumidity\":{\"get\":[{\"parameter\":\"CurrentHumidity\",\"property\":\"presentValue\",\"operation\":\"get\",\"object\":\"AnalogValue_22\"}]}}}}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile"
+					]
+				},
+				"description": "Add a new DeviceProfile (and associated Command objects) - name must be unique. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns DataValidationException (HTTP 409) if an associated command's name is a duplicate for the profile.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57bb718f555e5218873e5a27\",\"description\":\"HTTP Honeywell thermostats\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile"
+					]
+				},
+				"description": "Update the DeviceProfile identified by the id or name stored in the object provided. Id is used first, name is used second for identification purposes. Associated commands must be updated directly. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the profile cannot be found by the identifier provided.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceprofile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceprofile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceprofile"
+					]
+				},
+				"description": "Return all profiles sorted by id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the DevicReport designated by name. Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no DeviceReport is found with the provided name.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return DeviceReport matching given name (device report names should be unique). May be null if no report matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  NotFoundException (HTTP 404) if no DeviceReport is found with the provided name.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"livingroom collection report\",\"device\":\"livingroomthermostat\",\"event\":\"temperature collection\",\"expected\":[\"temperature\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport"
+					]
+				},
+				"description": "Add a new DeviceReport - name must be unique. Referenced objects (device, schedule event) are all referenced in the new DeviceReport by name and must already be persisted. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if any referenced object cannot be found by its provided name.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57bb6491555e5218873e5a35\",\"expected\":[\"hvactemp\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport"
+					]
+				},
+				"description": "Update the DeviceReport identified by the id or name in the object provided. Id is used first, name is used second for identification purposes. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if any referenced object cannot be found by its provided name.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/devicereport",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/devicereport",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"devicereport"
+					]
+				},
+				"description": "Return all device reports sorted by id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the DeviceService designated by name. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the name provided.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return the DeviceService matching given name (service names should be unique). May be null if no services matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the name provided.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"home thermostat device service\",\"description\":\"manage home thermostats\",\"labels\":[\"hvac\",\"thermostat\"],\"adminState\":\"unlocked\",\"operatingState\":\"enabled\",\"addressable\":{\"name\":\"hvac thermo address\"}}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice"
+					]
+				},
+				"description": "Add a new DeviceService - name must be unique.  The Addressable must already exist and can be referenced by an included Addressable object containing the Addressable's id or name. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns DataValidationException (HTTP 409) if an associated addressable (by id or name) is not found.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57bbbf8432d22c1c33934c61\",\"description\":\"manager service for home thermostats\",\"labels\":[\"hvac\",\"thermostat\",\"home\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice"
+					]
+				},
+				"description": "Update the DeviceServcie identified by the id or name stored in the object provided. Id is used first, name is used second for identification purposes. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if the device service cannot be found by the identifier provided.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/deviceservice",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/deviceservice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"deviceservice"
+					]
+				},
+				"description": "Return all device services sorted by id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/scheduleevent/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/scheduleevent/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"scheduleevent",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the ScheduleEvent designated by name. Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no ScheduleEvent is found with the provided name. DataValidationException (HTTP 409) if an attempt to delete a schedule event still being referenced by device reports.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/scheduleevent/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/scheduleevent/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"scheduleevent",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return ScheduleEvents matching given name (schedule names should be unique). May be null if no schedule events matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no ScheduleEvent is found with the provided name.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/scheduleevent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"scrub pushed records\",\"addressable\":{\"name\":\"scrub pushed records\"},\"parameters\":null,\"schedule\":\"daily\",\"service\":\"edgex-support-scheduler\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/scheduleevent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"scheduleevent"
+					]
+				},
+				"description": "Add a new ScheduleEvent - name must be unique. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if the event's associated schedule is not found (referenced by name). DataValidationException (HTTP 409) if the schedule was not provided.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/scheduleevent",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57bb5837555e5218873e5a23\",\"addressable\":{\"name\":\"weekly scrubber service\"}}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/scheduleevent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"scheduleevent"
+					]
+				},
+				"description": "Update the ScheduleEvent identified by the id or name in the object provided. Id is used first, name is used second for identification purposes. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. DataValidationException (HTTP 409) if an attempt to change the name is made when the schedule event is still being referenced by device reports. NotFoundException (HTTP 404) if no schedule is found for the identifier provided.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/scheduleevent",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/scheduleevent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"scheduleevent"
+					]
+				},
+				"description": "Return all schedule events sorted by id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/schedule/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/schedule/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"schedule",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the Schedule designated by name. Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no Schedule is found with the provided name.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/schedule/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/schedule/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"schedule",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return Schedule matching given name (schedule names should be unique). May be null if no schedule matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no Schedule is found with the provided name.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/schedule",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"hourly\",\"start\":\"20160101T000000\",\"end\":\"\",\"frequency\":\"PT1H\"} or {\"origin\":1471806386919,\"name\":\"at midnight\",\"start\":\"20160101T000000\",\"frequency\":\"PT1D\"} or {\"origin\":1471806386919,\"name\":\"daily noon\",\"start\":\"20160101T120000\",\"frequency\":\"PT1D\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/schedule",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"schedule"
+					]
+				},
+				"description": "Add a new Schedule - name must be unique. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. DataValidationException (HTTP 409) if the cron expression string is not properly formatted.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/schedule",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57bb49e6555e5218873e5a1b\",\"end\":\"20170101T000000\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/schedule",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"schedule"
+					]
+				},
+				"description": "Update a Schedule identified by the id or name in the object provided. Id is used first, name is used second for identification purposes. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. DataValidationException (HTTP // 409) if any the time or frequency strings are not properly formatted. NotFoundException (HTTP 404) if no schedule is found for the id.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/schedule",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/schedule",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"schedule"
+					]
+				},
+				"description": "Return all schedules sorted by id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the ProvisionWatcher designated by unique name identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no provision watcher with the provided name is found.\n\nParameters:\n\nname: unique name of provision watcher\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return ProvisionWatcher with matching name (name should be unique). May be null if none match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no provision watcher with the provided name is found.\n\nParameters:\n\nname: unique name of provision watcher\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"bacnet watcher\", \"origin\":1471806386919, \"identifiers\":{\"MAC\":\"00-05-1B-A1-99-99\",\"HTTP\":\"10.0.0.1\"},\"profile\":{\"id\":\"57ce033aadd4b99e5d020532\"},\"service\":{\"id\":\"57ce033aadd4b99e5d020538\"}} or {\"name\":\"bacnet watcher\", \"origin\":1471806386919, \"identifiers\":{\"MAC\":\"00-05-1B-A1-99-99\",\"HTTP\":\"10.0.0.1\"},\"profile\":{\"name\":\"thermostat profile\"},\"service\":{\"name\":\"home thermostat device service\"}}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher"
+					]
+				},
+				"description": "Add a new ProvisionWatcher - name must be unique. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  Returns DataValidationException (HTTP 409) if profile service are unknown\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"bacnet watcher\", \"origin\":14718063870000}  or {\"id\":\"57ce0523add4b99e5d020535\", \"origin\":14718063870000}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher"
+					]
+				},
+				"description": "Update the ProvisionWatcher identified by the id or name in the object provided. Id is used first, name is used second for identification purposes. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no provision watcher with the provided id is found.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/provisionwatcher",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/provisionwatcher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"provisionwatcher"
+					]
+				},
+				"description": "Return all provision watcher objects sorted by database generated id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Remove the Addressable designated by unique name identifier. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no addressable with the provided name is found.\n\nParameters:\n\nname: unique name of addressable\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return Addressable with matching name (name should be unique). May be null if none match. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.  Returns NotFoundException (HTTP 404) if not found by name.\n\nParameters:\n\nname: unique name of addressable\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"origin\":1471806386919,\n   \"name\":\"mbus-rth-lcd-address\",\n   \"protocol\":\"OTHER\",\n   \"address\":\"/dev/ttyUSB0,19200,8,1,0\",\n   \"port\":48089,\n   \"path\":\"/livingroomthermostat\",\n   \"publisher\":\"none\",\n   \"user\":\"none\",\n   \"password\":\"none\",\n   \"topic\":\"none\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable"
+					]
+				},
+				"description": "Add a new Addressable - name must be unique. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57bb276e555e5218873e5a13\", \"path\":\"/livingroomhvac\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable"
+					]
+				},
+				"description": "Update the Addressable identified by the id or name in the object provided. Id is used first, name is used second for identification purposes. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns NotFoundException (HTTP 404) if no addressable with the provided id is found.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/addressable",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/addressable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"addressable"
+					]
+				},
+				"description": "Return all addressable objects sorted by database generated id. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/command",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"cooling point\",\"get\":{\"path\":\"/cooling\",\"responses\":[{\"code\":\"200\",\"description\":\"ok\",\"expectedValues\":[\"temperature\"]}]},\"put\":{\"path\":\"/cooling\", \"responses\":[{\"code\":\"200\",\"description\":\"ok\",\"expectedValues\":[\"temperature\"]}], \"parameterNames\":[\"coolingpoint\"]}}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/command",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"command"
+					]
+				},
+				"description": "Add a new Command. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/command",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57bb3195555e5218873e5a1a\",\"put\":{\"path\":\"/cooling\", \"responses\":[{\"code\":\"200\",\"description\":\"ok\",\"expectedValues\":[\"temperature\"]}], \"parameterNames\":[\"coolingpoint\"]}}"
+				},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/command",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"command"
+					]
+				},
+				"description": "Update the Command identified by the database generated id in the object provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no Command is found with the provided id. DataValidationException (HTTP 409) if the name is updated and it is not unique for the Device Profile.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/command",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48081/api/v1/command",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48081",
+					"path": [
+						"api",
+						"v1",
+						"command"
+					]
+				},
+				"description": "Return all command objects. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. Returns LimitExceededException (HTTP 413) if the number returned exceeds the max limit.\n\nParameters:\n\n"
+			},
+			"response": []
+		}
+	]
+}

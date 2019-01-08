@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "05b0ff0d-7698-494c-8746-b0bf71b25acd",
+		"name": "Scheduler Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/info/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48085/api/:version/info/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48085",
+					"path": [
+						"api",
+						":version",
+						"info",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Return Schedule matching given name (schedule names should be unique). May be null if no schedule matches on the name provided. Returns Internal Service Error (HTTP 500) for unknown or unanticipated issues. NotFoundException (HTTP 404) if no Schedule is found with the provided name.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48085/api/:version/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48085",
+					"path": [
+						"api",
+						":version",
+						"ping"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Test service providing an indication that the service is available.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/flush",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48085/api/:version/flush",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48085",
+					"path": [
+						"api",
+						":version",
+						"flush"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Flushes all of the current schedule(s), schedule event(s) from the Scheduler. Will reload from core-metadata and config.\n\nParameters:\n\n"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,1142 @@
+{
+	"info": {
+		"_postman_id": "7fa94605-2b24-4575-bd37-819b27abf1fa",
+		"name": "Alerts and Notifcations Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"ping"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Test service providing an indication that the service is available.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"slug\": \"notice-test-001\",\n  \"sender\": \"System Management\",\n  \"category\": \"SECURITY\",\n  \"severity\": \"NORMAL\",\n  \"content\": \"Hello, Notification!\",\n  \"labels\": [\n    \"cool\",\n    \"test\"\n  ]\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost/api/:version/notification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Receive Alerts or Notifications.  If the severity is CRITICAL, the Notifications are processed (distributed) immediately.  Or, the Notification is processed in batch.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/slug/:slug",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/slug/:slug",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"slug",
+						":slug"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "slug"
+						}
+					]
+				},
+				"description": "Query a specific Notification by slug.\n\nParameters:\n\nslug: Slug is a meaningful identifier provided by client, and is case insensitive for query.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/slug/:slug",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/slug/:slug",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"slug",
+						":slug"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "slug"
+						}
+					]
+				},
+				"description": "Delete a specific Notification by slug.\n\nParameters:\n\nslug: Slug is a meaningful identifier provided by client, and is case insensitive for query.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/age/:age",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/age/:age",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"age",
+						":age"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "age"
+						}
+					]
+				},
+				"description": "Delete the proccessed Notifications if the current timestamp minus their last modification timestamp is less than the age parameter, and the corresponding Transmissions will also be deteled.  Please notice this API is only for proccessed Notifications (status = PROCCESSED).  If the deletion purpose includes each kind of Notifications, please refer to /cleanup API.\n\nParameters:\n\nage: Specify the age of Notification, and the format is in milliseconds.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/sender/:sender/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/sender/:sender/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"sender",
+						":sender",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "sender"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Notifications by sender name with limited returned records.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nsender: The sender name of the Subscription, which could be partially matched, and is case insensitive for query.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/start/:start/end/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/start/:start/end/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"start",
+						":start",
+						"end",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Notifications by creation timestamp between start date and end date.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nstart: Start date in long form.\n\nend: End date in long form.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/start/:start/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/start/:start/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"start",
+						":start",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Notifications by creation timestamp after start date.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nstart: Start date in long form.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/end/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/end/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"end",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Notifications by creation timestamp before end date.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nend: End date in long form.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/labels/:labels/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/labels/:labels/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"labels",
+						":labels",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "labels"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Notifications by labels matching any one of them.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nlabels: Accept multiple labels separated by comma.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/notification/new/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/notification/new/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"notification",
+						"new",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Fetch the unprocessed Notifications (status = NEW).\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "List all Subscriptions.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"slug\": \"sys-admin\",\n  \"receiver\": \"System Administrator\",\n  \"subscribedCategories\": [\n    \"SECURITY\",\n    \"HW_HEALTH\",\n    \"SW_HEALTH\"\n  ],\n  \"subscribedLabels\": [\n    \"Dell\",\n    \"IoT\",\n    \"test\"\n  ],\n  \"channels\": [\n    {\n      \"type\": \"REST\",\n      \"url\": \"http://abc.def/alert\"\n    },\n    {\n      \"type\": \"EMAIL\",\n      \"mailAddresses\": [\n        \"cloud@abc.def\",\n        \"jack@abc.def\"\n      ]\n    }\n  ]\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Create a new Subscritpion.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"slug\": \"sys-admin\",\n  \"receiver\": \"System Administrator\",\n  \"subscribedCategories\": [\n    \"SECURITY\",\n    \"HW_HEALTH\",\n    \"SW_HEALTH\"\n  ],\n  \"subscribedLabels\": [\n    \"Dell\",\n    \"IoT\",\n    \"test\"\n  ],\n  \"channels\": [\n    {\n      \"type\": \"REST\",\n      \"url\": \"http://abc.def/alert\"\n    },\n    {\n      \"type\": \"EMAIL\",\n      \"mailAddresses\": [\n        \"cloud@abc.def\",\n        \"jack@abc.def\"\n      ]\n    }\n  ]\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Update a specific Subscription according to the slug in request body, and the Boolean value \"true\" will be returned to indicate updating successfully.  If the slug doesn't exit, the 404 NotFound error will be returned.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription/slug/:slug",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription/slug/:slug",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription",
+						"slug",
+						":slug"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "slug"
+						}
+					]
+				},
+				"description": "Query a specific Subscription by slug.\n\nParameters:\n\nslug: Slug is a meaningful identifier provided by client, and is case insensitive for query.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription/slug/:slug",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription/slug/:slug",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription",
+						"slug",
+						":slug"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "slug"
+						}
+					]
+				},
+				"description": "Delete a specific Subscription by slug.\n\nParameters:\n\nslug: Slug is a meaningful identifier provided by client, and is case insensitive for query.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription/categories/:categories/labels/:labels",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription/categories/:categories/labels/:labels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription",
+						"categories",
+						":categories",
+						"labels",
+						":labels"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "categories"
+						},
+						{
+							"key": "labels"
+						}
+					]
+				},
+				"description": "Query the Subscription by subscribed categories and labels matching any one of them.\n\nParameters:\n\ncategories: The subscribed categories, accepting multiple categories separated by comma.\n\nlabels: The subscribed labels, accepting multiple labels separated by comma.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription/categories/:categories",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription/categories/:categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription",
+						"categories",
+						":categories"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "categories"
+						}
+					]
+				},
+				"description": "Query the Subscription by subscribed categories matching any one of them.\n\nParameters:\n\ncategories: The subscribed categories, accepting multiple categories separated by comma.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription/labels/:labels",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription/labels/:labels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription",
+						"labels",
+						":labels"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "labels"
+						}
+					]
+				},
+				"description": "Query the Subscription by subscribed labels matching any one of them.\n\nParameters:\n\nlabels: The subscribed labels, accepting multiple labels separated by comma.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/subscription/receiver/:receiver",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/subscription/receiver/:receiver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"subscription",
+						"receiver",
+						":receiver"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "receiver"
+						}
+					]
+				},
+				"description": "Query the Subscriptions by Receiver Name.\n\nParameters:\n\nreceiver: The receiver name of the Subscription, which could be partially matched, and is case insensitive for query.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/slug/:slug/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/slug/:slug/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"slug",
+						":slug",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "slug"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Transmissions associating a specific Notification by the Notification slug.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nslug: This is a Notification slug which is a meaningful identifier provided by client, and it is case insensitive for query.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/start/:start/end/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/start/:start/end/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"start",
+						":start",
+						"end",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Transmissions by creation timestamp between start date and end date.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nstart: Start date in long form.\n\nend: End date in long form.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/start/:start/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/start/:start/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"start",
+						":start",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Transmissions by creation timestamp after start date.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nstart: Start date in long form.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/end/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/end/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"end",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the Transmissions by creation timestamp before end date.\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\nend: End date in long form.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/escalated/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/escalated/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"escalated",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the escalated Transmissions (status = ESCALATED)\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/failed/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/failed/:limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"failed",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "Query the failed Transmissions (status = FAILED)\n\nParameters:\n\nlimit: The maximum number of records to fetch.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/sent/age/:age",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/sent/age/:age",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"sent",
+						"age",
+						":age"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "age"
+						}
+					]
+				},
+				"description": "Delete all the sent Transmissions (status = SENT) if the current timestamp minus their last modification timestamp is less than the age parameter.\n\nParameters:\n\nage: Specify the age of Transmission, and the format is in milliseconds.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/escalated/age/:age",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/escalated/age/:age",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"escalated",
+						"age",
+						":age"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "age"
+						}
+					]
+				},
+				"description": "Delete all the escalated Transmissions (status = ESCALATED) if the current timestamp minus their last modification timestamp is less than the age parameter.\n\nParameters:\n\nage: Specify the age of Transmission, and the format is in milliseconds.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/acknowledged/age/:age",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/acknowledged/age/:age",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"acknowledged",
+						"age",
+						":age"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "age"
+						}
+					]
+				},
+				"description": "Delete all the acknowledged Transmissions (status = ACKNOWLEDGED) if the current timestamp minus their last modification timestamp is less than the age parameter.\n\nParameters:\n\nage: Specify the age of Transmission, and the format is in milliseconds.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/transmission/failed/age/:age",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/transmission/failed/age/:age",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"transmission",
+						"failed",
+						"age",
+						":age"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "age"
+						}
+					]
+				},
+				"description": "Delete all the failed Transmissions (status = FAILED and resendCount >= resend limit) if the current timestamp minus their last modification timestamp is less than the age parameter.\n\nParameters:\n\nage: Specify the age of Transmission, and the format is in milliseconds.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/cleanup",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/cleanup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"cleanup"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Delete all the Notifications if the current timestamp minus their last modification timestamp is less than a default age setting, and the corresponding Transmissions will also be deleted.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/cleanup/age/:age",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost/api/:version/cleanup/age/:age",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						":version",
+						"cleanup",
+						"age",
+						":age"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "age"
+						}
+					]
+				},
+				"description": "Delete all the Notifications if the current timestamp minus their last modification timestamp is less than the age parameter, and the corresponding Transmissions will also be deleted.\n\nParameters:\n\nage: Specify the age of <<typeName>>, and the format is in milliseconds.\n\n"
+			},
+			"response": []
+		}
+	]
+}

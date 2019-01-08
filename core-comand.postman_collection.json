@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "021caeba-6977-4295-b794-490d4438c09b",
+		"name": "core-comand",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"ping"
+					]
+				},
+				"description": "Test service providing an indication that the service is available.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/config",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"config"
+					]
+				},
+				"description": "Fetch the current state of the service's configuration.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/metrics",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"metrics"
+					]
+				},
+				"description": "Fetch the current state of the service's metrics.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/adminstate/:adminState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device/:id/adminstate/:adminState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"adminstate",
+						":adminState"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "adminState"
+						}
+					]
+				},
+				"description": "Set the admin state of the device (as referenced by the database generated id of the device) to the state provided (either locked or unlocked). ServiceException (HTTP 500) for unanticipated or unknown issues encountered. Throws NotFoundException (HTTP 404) if no device exists by the id provided.\n\nParameters:\n\nid: \n\nadminState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/opstate/:opState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device/:id/opstate/:opState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"opstate",
+						":opState"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "opState"
+						}
+					]
+				},
+				"description": "Set the op state of the device (as referenced by the database generated id of the device) to the state provided (either enabled or disabled). ServiceException (HTTP 500) for unanticipated or unknown issues encountered. Throws NotFoundException (HTTP 404) if no device exists by the id provided.\n\nParameters:\n\nid: \n\nopState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Retrieve a device (by database generated id) and its command offerings. Throws ServiceException (HTTP 500) for unanticipated or unknown issues encountered. Throws NotFoundException (HTTP 404) if no device exists by the id provided.\n\nParameters:\n\nid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name/adminstate/:adminState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device/name/:name/adminstate/:adminState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name",
+						"adminstate",
+						":adminState"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "adminState"
+						}
+					]
+				},
+				"description": "Set the admin state of the device (by name of the device) to the state provided (either locked or unlocked). ServiceException (HTTP 500) for unanticipated or unknown issues encountered. Throws NotFoundException (HTTP 404) if no device exists by the name provided.\n\nParameters:\n\nname: \n\nadminState: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name/opstate/:opState",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device/name/:name/opstate/:opState",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name",
+						"opstate",
+						":opState"
+					],
+					"variable": [
+						{
+							"key": "name"
+						},
+						{
+							"key": "opState"
+						}
+					]
+				},
+				"description": "Set the op state of the device (by name of the device) to the state provided (either enabled or disabled). ServiceException (HTTP 500) for unanticipated or unknown issues encountered. Throws NotFoundException (HTTP 404) if no device exists by the name provided.\n\nParameters:\n\nopState: \n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Retrieve a device (by name) and its command offerings. Throws ServiceException (HTTP 500) for unanticipated or unknown issues encountered. Throws NotFoundException (HTTP 404) if no device exists by the name provided.\n\nParameters:\n\nname: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device"
+					]
+				},
+				"description": "Retrieve a list of (all) devices and their command offerings. Throws ServiceException (HTTP 500) for unanticipated or unknown issues encountered.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/command/:commandid",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device/:id/command/:commandid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"command",
+						":commandid"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "commandid"
+						}
+					]
+				},
+				"description": "Issue the get command referenced by the command id to the device/sensor (also referenced by database generated id) it is associated to via the device service. ServiceException (HTTP 500) for unanticipated or unknown issues encountered. Throws NotFoundException (HTTP 404) if no device exists by the id provided. Throws LockedException (HTTP 423) if the device is locked (admin state).\n\nParameters:\n\nid: \n\ncommandid: \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/device/:id/command/:commandid",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"temp\":72}"
+				},
+				"url": {
+					"raw": "http://localhost:48082/api/v1/device/:id/command/:commandid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48082",
+					"path": [
+						"api",
+						"v1",
+						"device",
+						":id",
+						"command",
+						":commandid"
+					],
+					"variable": [
+						{
+							"key": "id"
+						},
+						{
+							"key": "commandid"
+						}
+					]
+				},
+				"description": "Issue the put command referenced by the command id to the device/sensor (also referenced by database generated id) it is associated to via the device service. ServiceException (HTTP 500) for unanticipated or unknown issues encountered. Throws NotFoundException (HTTP 404) if no device exists by the id provided. Throws LockedException (HTTP 423) if the device is locked (admin state).\n\nParameters:\n\nid: \n\ncommandid: \n\n"
+			},
+			"response": []
+		}
+	]
+}

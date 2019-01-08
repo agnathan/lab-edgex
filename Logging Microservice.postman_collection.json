@@ -1,0 +1,587 @@
+{
+	"info": {
+		"_postman_id": "365d76ca-35a1-4034-9979-b45273f6cc63",
+		"name": "Logging Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/ping",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"ping"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Test service providing an indication that the service is available.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/config",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/config",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"config"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Fetch the current state of the service's configuration.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"logLevel\": \"WARN\",\n  \"originService\": \"service1\",\n  \"message\": \"Hello, Logging Service!\"\n}\n"
+				},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs"
+					],
+					"variable": [
+						{
+							"key": "version"
+						}
+					]
+				},
+				"description": "Create a new LogEntry\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/:limit",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nlimit: the maximum number of records to fetch\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/:start/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/:start/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						":start",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nstart: start date in long form\n\nend: end date in long form\n\nlimit: the maximimum number of records to fetch\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/originServices/:originServices/:start/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/originServices/:originServices/:start/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						"originServices",
+						":originServices",
+						":start",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "originServices"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\noriginServices: accepting multiple originServices separated by comma\n\nstart: start date in long form\n\nend: end date in long form\n\nlimit: the maximum number of records to fetch\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/keywords/:keywords/:start/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/keywords/:keywords/:start/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						"keywords",
+						":keywords",
+						":start",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "keywords"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nkeywords: accepting multiple keywords separated by comma\n\nstart: start date in long form\n\nend: end date in long form\n\nlimit: the maximum number of records to fetch\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/logLevels/:logLevels/:start/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/logLevels/:logLevels/:start/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						"logLevels",
+						":logLevels",
+						":start",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "logLevels"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nlogLevels: accepting multiple logLevels separated by comma\n\nstart: start date in long form\n\nend: end date in long form\n\nlimit: the maximum number of records to fetch\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/logLevels/:logLevels/originServices/:originServices/:start/:end/:limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/logLevels/:logLevels/originServices/:originServices/:start/:end/:limit",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						"logLevels",
+						":logLevels",
+						"originServices",
+						":originServices",
+						":start",
+						":end",
+						":limit"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "logLevels"
+						},
+						{
+							"key": "originServices"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						},
+						{
+							"key": "limit"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nlogLevels: accepting multiple logLevels separated by comma\n\noriginServices: accepting multiple originServices separated by comma\n\nstart: start date in long form\n\nend: end date in long form\n\nlimit: the maximum number of records to fetch\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/:start/:end",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/:start/:end",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						":start",
+						":end"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nstart: start date in long form\n\nend: end date in long form\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/originServices/:originServices/:start/:end",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/originServices/:originServices/:start/:end",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						"originServices",
+						":originServices",
+						":start",
+						":end"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "originServices"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\noriginServices: accepting multiple originServices separated by comma\n\nstart: start date in long form\n\nend: end date in long form\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/keywords/:keywords/:start/:end",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/keywords/:keywords/:start/:end",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						"keywords",
+						":keywords",
+						":start",
+						":end"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "keywords"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nkeywords: accepting multiple keywords separated by comma\n\nstart: start date in long form\n\nend: end date in long form\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/logLevels/:logLevels/:start/:end",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/logLevels/:logLevels/:start/:end",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						"logLevels",
+						":logLevels",
+						":start",
+						":end"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "logLevels"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nlogLevels: accepting multiple logLevels separated by comma\n\nstart: start date in long form\n\nend: end date in long form\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/logs/logLevels/:logLevels/originServices/:originServices/:start/:end",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://support-logging:port/api/:version/logs/logLevels/:logLevels/originServices/:originServices/:start/:end",
+					"protocol": "http",
+					"host": [
+						"support-logging"
+					],
+					"port": "port",
+					"path": [
+						"api",
+						":version",
+						"logs",
+						"logLevels",
+						":logLevels",
+						"originServices",
+						":originServices",
+						":start",
+						":end"
+					],
+					"variable": [
+						{
+							"key": "version"
+						},
+						{
+							"key": "logLevels"
+						},
+						{
+							"key": "originServices"
+						},
+						{
+							"key": "start"
+						},
+						{
+							"key": "end"
+						}
+					]
+				},
+				"description": "\n\nParameters:\n\nlogLevels: accepting multiple logLevels separated by comma\n\noriginServices: accepting multiple originServices separated by comma\n\nstart: start date in long form\n\nend: end date in long form\n\n"
+			},
+			"response": []
+		}
+	]
+}

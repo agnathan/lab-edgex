@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "5b12d2dc-a1f2-4927-b694-3ab4d0f3c5ce",
+		"name": "export-client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/registration/id/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/registration/id/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"registration",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Delete a client export registration by database id. Return NotFoundException (HTTP 404) if the existing export registration cannot be found by id. Return ServiceException (HTTP 503) for unknown or unanticipated issues.\n\nParameters:\n\nid: database generated id for the ExportRegistration\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/registration/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/registration/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"registration",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id"
+						}
+					]
+				},
+				"description": "Fetch a client export registration by id. Return NotFoundException (HTTP 404) if no export registration matches on id. Return ServiceException (HTTP 503) for unknown or unanticipated issues.\n\nParameters:\n\nid: database generated id for the ExportRegistration\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/registration/reference/:type",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/registration/reference/:type",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"registration",
+						"reference",
+						":type"
+					],
+					"variable": [
+						{
+							"key": "type"
+						}
+					]
+				},
+				"description": "Fetch all supported values for the specified Export Client registration property type. Types are algorithms, compressions, formats, and destinations. Return ServiceException (HTTP 503) for unknown type specifications.\n\nParameters:\n\ntype: Export Client registration property type. Valid types are \"algorithms\", \"compressions\", \"formats\", and \"destinations\".\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"ping"
+					]
+				},
+				"description": "Test service providing an indication that the service is available.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/config",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"config"
+					]
+				},
+				"description": "Fetch the current state of the service's configuration.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/registration/name/:name",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/registration/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"registration",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Delete a client export registration by name.  Return NotFoundException (HTTP 404) if the existing export registration cannot be found by name. Return ServiceException (HTTP 503) for unknown or unanticipated issues.\n\nParameters:\n\nname: unique name of a client ExportRegistration\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/registration/name/:name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/registration/name/:name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"registration",
+						"name",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name"
+						}
+					]
+				},
+				"description": "Fetch a client export registration by unique name. Return NotFoundException (HTTP 404) if no export registration matches on name. Return ServiceException (HTTP 503) for unknown or unanticipated issues.\n\nParameters:\n\nname: unique name of a client ExportRegistration\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"origin\":1471806386919,\"name\":\"OSIClient\",\"addressable\":{\"origin\":1471806386919,\"name\":\"OSIMQTTBroker\",\"protocol\":\"TCP\",\"address\":\"m10.cloudmqtt.com\",\"port\":15421,\"publisher\":\"EdgeXExportPublisher\",\"user\":\"hukfgtoh\",\"password\":\"uP6hJLYW6Ji4\",\"topic\":\"EdgeXDataTopic\"},\"format\":\"JSON\",\"filter\":{\"deviceIdentifiers\":[\"livingroomthermosat\", \"hallwaythermostat\"],\"valueDescriptorIdentifiers\":[\"temperature\", \"humidity\"]},\"encryption\":{\"encryptionAlgorithm\":\"AES\",\"encryptionKey\":\"123\",\"initializingVector\":\"123\"},\"compression\":\"GZIP\",\"enable\":true, \"destination\": \"REST_ENDPOINT\"}"
+				},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"registration"
+					]
+				},
+				"description": "Add a new client export registration. Name must be unique across the database. Return ServiceException (HTTP 503) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/registration",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"57db5bd2add4d779d38ff066\",\"enable\":false} or {\"name\":\"OSIClient\",\"enable\":false}"
+				},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"registration"
+					]
+				},
+				"description": "Update a client export registration. Name & id are not updated as they are identifiers. Return NotFoundException (HTTP 404) if the existing export registration cannot be found by id or name. Return ServiceException (HTTP 503) for unknown or unanticipated issues.\n\nParameters:\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "/registration",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:48071/api/v1/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48071",
+					"path": [
+						"api",
+						"v1",
+						"registration"
+					]
+				},
+				"description": "Fetch all client export registrations. Return ServiceException (HTTP 503) for unknown or unanticipated issues. No limits are exercised on this query at this time. May need to add this in the future if the number of clients is huge.\n\nParameters:\n\n"
+			},
+			"response": []
+		}
+	]
+}
